@@ -2,9 +2,10 @@
 FROM python:3.12-slim
 
 # 2. Instalar dependências do sistema para o OpenCV funcionar no Linux
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --fix-missing && apt-get install -y \
     libgl1-mesa-glx \
     libglib2.0-0 \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # 3. Definir a pasta de trabalho dentro do container
@@ -17,5 +18,5 @@ RUN pip install --no-cache-dir -r requeriments.txt
 # 5. Copiar o resto do código fonte
 COPY . .
 
-# 6. Comando para rodar o app (ajustaremos depois para a fase de jogo)
-CMD ["python", "src/collect_data.py"]
+# 6. Comando para rodar o app
+CMD ["python", "src/game.py"]

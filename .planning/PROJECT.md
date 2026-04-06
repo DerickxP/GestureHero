@@ -19,13 +19,11 @@ O sistema deve fornecer pontuação, sistema de combo, feedback visual e progres
 - **Linguagem**: Python 3.12 (Ambiente virtual `GestureHero`)
 - **Bibliotecas**:
   - `OpenCV`: Captura de webcam e UI/HUD.
-  - `MediaPipe`: Landmarks da mão (21 pontos).
-  - `TensorFlow/Keras`: Modelo de classificação (IA).
-  - `NumPy`, `Scikit-learn`: Manipulação de dados e métricas.
+  - `MediaPipe`: Gestos pré-treinados (Gesture Recognizer API).
+  - `NumPy`: Manipulação de matrizes e vetores.
 
 ## 4. Arquitetura do Sistema
 - **Captura**: Loop de vídeo via OpenCV.
-- **Detecção**: MediaPipe extrai as coordenadas (X, Y, Z).
-- **Classificador**: Rede Neural que decide qual o gesto com base nos pontos.
-- **Motor do Jogo**: Lógica de comandos, score e tempo.
-- **UI**: Overlays gráficos em tempo real.
+- **Detecção & Classificação**: MediaPipe Tasks analisa as mãos e classifica o gesto nativamente (pré-treinado).
+- **Motor do Jogo**: Lógica de comandos, score e tempo com base no gesto detectado.
+- **UI**: Overlays gráficos em tempo real (HUD).

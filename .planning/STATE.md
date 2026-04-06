@@ -12,10 +12,10 @@ O ambiente de desenvolvimento está pronto com Python 3.12 e todas as biblioteca
 - Instaladas as dependências: OpenCV, MediaPipe, TensorFlow, Scikit-learn, etc.
 
 ## O Que Falta?
-- Criar o script de captura de dados.
-- Realizar o treinamento da rede neural.
+- Baixar o modelo `gesture_recognizer.task`.
+- Implementar o loop do jogo com a API GestureRecognizer.
 - Desenvolver a lógica do jogo (Timer, Score, Comandos).
 - Montar a interface (HUD).
 
 ## Próximo Passo Crítico:
-Iniciação da **Fase 2: Data Collection**.
+Iniciação da **Fase 2: Pre-trained Model Setup**.

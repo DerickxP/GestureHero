@@ -11,7 +11,7 @@
 |:---|:---|:---|:---|:---|:---|
 | 1 | `Environment Setup` | Dev | Python 3.12, venv, dependencies, folders. | - | COMPLETED |
 | 1.1 | `Dockerization` | Dev | Create Dockerfile and .dockerignore for portability. | Phase 1 | COMPLETED |
-| 2 | `Data Collection (src/collect_data.py)` | Dev | Capture gesture landmarks (200 ea), save in `.npy`. | Phase 1 | TODO |
-| 3 | `Preprocessing & Neural Network Training (src/train_model.py)` | AI | Normalize points (X,Y), build Keras Sequential model. | Phase 2 | TODO |
-| 4 | `Game Loop & AI Inference (src/game.py)` | Dev/Game | OpenCV VideoLoop, HUD, Command logic, Scoring. | Phase 3 | TODO |
+| 2 | `Pre-trained Model Setup` | Dev | Download `gesture_recognizer.task` and test Task API. | Phase 1 | TODO |
+| 3 | `Game Logic & HUD (src/game.py)` | Dev/Game | VideoLoop, Gesture Inference, Score, HUD. | Phase 2 | TODO |
+| 4 | `Final Polish & Portfolio Artifacts` | Portfolio | README.md, testing, visual cleanup. | Phase 3 | TODO |
 | 5 | `Final Polish & Portfolio Artifacts` | Portfolio | README.md, testing, visual cleanup. | Phase 4 | TODO |
