@@ -16,6 +16,12 @@ class GestureHeroGame:
 
         # 2. Game Settings
         self.gestures_pool = ['Open_Palm', 'Closed_Fist', 'Victory', 'Pointing_Up']
+        self.gestures_pt = {
+            'Open_Palm': 'MAO ABERTA',
+            'Closed_Fist': 'MAO FECHADA',
+            'Victory': 'SINAL DE V',
+            'Pointing_Up': 'DEDO P/ CIMA'
+        }
         self.score = 0
         self.lives = 3
         self.game_over = False
@@ -24,7 +30,7 @@ class GestureHeroGame:
         self.time_limit = 3.0
         
         # 3. Visuals & Themes
-        self.feedback_text = "READY?"
+        self.feedback_text = "PREPARE-SE!"
         self.feedback_color = (0, 255, 255) # Cyan Neon
         self.theme_main = (255, 0, 255) # Magenta
         self.last_result_time = 0
@@ -32,7 +38,7 @@ class GestureHeroGame:
     def get_new_command(self):
         self.current_command = random.choice(self.gestures_pool)
         self.command_start_time = time.time()
-        self.feedback_text = f"{self.current_command}!"
+        self.feedback_text = f"{self.gestures_pt[self.current_command]}!"
         self.feedback_color = (0, 255, 255)
 
     def draw_text_with_shadow(self, img, text, pos, font, scale, color, thickness, shadow_color=(0, 0, 0)):
@@ -77,7 +83,7 @@ class GestureHeroGame:
         # Timeout logic
         if elapsed_time > self.time_limit:
             self.lives -= 1
-            self.feedback_text = "TOO SLOW!"
+            self.feedback_text = "MUITO LENTO!"
             self.feedback_color = (0, 0, 255) 
             if self.lives <= 0:
                 self.game_over = True
@@ -89,7 +95,7 @@ class GestureHeroGame:
             detected_gesture = result.gestures[0][0].category_name
             if detected_gesture == self.current_command:
                 self.score += 100
-                self.feedback_text = "PERFECT!"
+                self.feedback_text = "PERFEITO!"
                 self.feedback_color = (0, 255, 0)
                 self.get_new_command()
                 self.time_limit = max(1.2, self.time_limit * 0.97)
@@ -105,8 +111,8 @@ class GestureHeroGame:
         cv2.addWeighted(overlay, 0.6, frame, 0.4, 0, frame)
 
         # Labels
-        self.draw_text_with_shadow(frame, f"SCORE: {self.score}", (30, 45), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
-        self.draw_text_with_shadow(frame, "LIVES:", (w - 230, 45), cv2.FONT_HERSHEY_DUPLEX, 0.9, (255, 255, 255), 2)
+        self.draw_text_with_shadow(frame, f"PONTOS: {self.score}", (30, 45), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
+        self.draw_text_with_shadow(frame, "VIDAS:", (w - 230, 45), cv2.FONT_HERSHEY_DUPLEX, 0.9, (255, 255, 255), 2)
         
         # Hearts for Lives
         heart_color = (0, 0, 255) if self.lives > 1 else (0, 165, 255)
