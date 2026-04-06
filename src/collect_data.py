@@ -6,7 +6,7 @@ import time  # Time: Gera as pausas de 3 segundos entre os gestos
 
 # 1. Configurações Iniciais: Definimos os nomes e onde salvar tudo
 GESTURES = ['open_hand', 'closed_fist', 'point_left', 'point_right']
-DATA_PATH = 'data'  # Pasta onde os gestos serão salvos
+DATA_PATH = os.path.join('..', 'data')  # Sobe um nível para achar a pasta data
 SAMPLES_PER_GESTURE = 200  # Quantidade de 'fotos' numéricas para cada gesto
 
 # 2. Inicializar o 'Cérebro' do MediaPipe

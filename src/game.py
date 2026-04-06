@@ -5,51 +5,56 @@ from mediapipe.tasks.python import vision
 import time
 import os
 
-# 1. Configuração do Modelo e Reconhecedor
+# 1. Configuration: Model Path and Recognizer Setup
 model_path = os.path.join("models", "gesture_recognizer.task")
 
+# Base options and Task options initialization
 base_options = python.BaseOptions(model_asset_path=model_path)
 options = vision.GestureRecognizerOptions(base_options=base_options)
 recognizer = vision.GestureRecognizer.create_from_options(options)
 
 def run_game():
+    # Initialize webcam capture (index 0)
     cap = cv2.VideoCapture(0)
     
-    print("Iniciando Gesture Hero com Reconhecimento do Google...")
-    print("Pressione 'q' para sair.")
+    print("Starting Gesture Hero with Google AI Recognition...")
+    print("Press 'q' to exit.")
 
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             break
 
-        # Inverter horizontalmente para efeito de espelho
+        # Flip horizontally for a mirror effect
         frame = cv2.flip(frame, 1)
 
-        # Converter BGR para RGB para o MediaPipe
+        # Convert BGR to RGB (required by MediaPipe)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
-        # Realizar o reconhecimento do gesto
+        # Perform real-time gesture recognition
         gesture_recognition_result = recognizer.recognize(mp_image)
 
-        # Exibir o resultado se houver gestos detectados
+        # HUD Logic: Display detection results if any
         if gesture_recognition_result.gestures:
             top_gesture = gesture_recognition_result.gestures[0][0].category_name
             confidence = gesture_recognition_result.gestures[0][0].score
             
-            # HUD simples
-            cv2.putText(frame, f"Gesto: {top_gesture} ({confidence:.2f})", 
+            # Draw Gesture information and Confidence on screen
+            cv2.putText(frame, f"Gesture: {top_gesture} ({confidence:.2f})", 
                         (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         else:
-            cv2.putText(frame, "Nenhum gesto detectado", 
+            # Fallback message when no hand is detected
+            cv2.putText(frame, "No gesture detected", 
                         (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-        # Mostrar o frame
-        cv2.imshow('Gesture Hero - Teste de Reconhecimento', frame)
+        # Display the output window
+        cv2.imshow('Gesture Hero - Recognition Test', frame)
 
+        # Key listener for closing the app
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
+    # Cleanup resources
     cap.release()
     cv2.destroyAllWindows()
 

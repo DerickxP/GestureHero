@@ -1,17 +1,17 @@
-# Project: Gesture Hero
+# Projeto: Gesture Hero
 
 ## 1. Visão do Produto
 **Nome**: Gesture Hero
 **Tipo**: Minigame com visão computacional em tempo real.
-**Objetivo**: Criar um jogo controlado por gestos usando webcam, com detecção por MediaPipe e classificação por inteligência artificial (CNN/MLP).
+**Objetivo**: Criar um jogo controlado por gestos usando webcam, com detecção por MediaPipe e modelos de classificação pré-treinados.
 **Finalidade**: Aprendizado prático de Visão Computacional, demonstração de portfólio e gameplay interativo.
 
 ## 2. Proposta do Jogo
 O jogador executa gestos em frente à webcam para responder a comandos na tela:
-- `mão aberta` (open_hand)
-- `punho fechado` (closed_fist)
-- `apontar para a esquerda` (point_left)
-- `apontar para a direita` (point_right)
+- `Open_Palm` (Defesa ou Menu)
+- `Closed_Fist` (Ataque ou Seleção)
+- `Victory` (Especial)
+- `Pointing_Up` (Navegação/Mira)
 
 O sistema deve fornecer pontuação, sistema de combo, feedback visual e progresso de fase.
 
