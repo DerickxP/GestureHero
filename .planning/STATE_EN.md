@@ -2,20 +2,14 @@
 
 ## Date: 2026-04-06
 
-## Overall Status: ✅ Phase 1 & 2 Completed.
-The development environment is ready with Python 3.12 and all necessary libraries installed. The folder structure has been defined, and GSD documents (`PROJECT`, `REQUIREMENTS`, `ROADMAP`) are active and bilingual.
+## Overall Status: ✅ v1.0 Completed!
+The project has reached its first stable landmark. The environment is set up, the AI model is integrated, and the bilingual documentation is finalized.
 
-## What's been done?
-- Product vision defined.
-- Gesture technical specification created (Open_Palm, Closed_Fist, Pointing_Up, Victory).
-- Virtual environment `GestureHero` configured with Python 3.12.
-- Dependencies installed: OpenCV, MediaPipe, etc.
-- **Pre-trained model (`gesture_recognizer.task`) downloaded and managed by Git.**
+## What's been done (v1.0)?
+- ✅ Product Vision and Technical Specification.
+- ✅ Pre-trained MediaPipe model integrated with Git.
+- ✅ Main game loop functional (`src/game.py`).
+- ✅ README and strategic documentation in PT and EN.
 
-## What's next?
-- Implement the game loop with the GestureRecognizer API.
-- Develop game logic (Timer, Score, Commands).
-- Build the HUD interface.
-
-## Critical Next Step:
-Initiating **Phase 3: Game Logic & HUD**.
+## Next Milestone (v1.1):
+Planning for **v1.1 - Docker Portability**, focusing on native webcam support within containers.

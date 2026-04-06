@@ -1,17 +1,29 @@
 # Gesture Hero Roadmap
 
+## 🚀 Milestones
+
+### **v1.0 - GestureHero (Current Phase)**
+- ✅ Integrated MediaPipe recognition (no manual training required).
+- ✅ Bilingual documentation and professional READMEs.
+- ✅ Virtual environment `venv` configured and tracked.
+- 🏁 **READY FOR PORTFOLIO.**
+
+### **v1.1 - GestureHero - Docker (Next Phase)**
+- [ ] Implement webcam passthrough for Docker on Windows (using usbipd-win).
+- [ ] Optimize Docker image size.
+- [ ] Automation with Docker Compose.
+
+---
+
 ## What's been done?
 - Product vision defined.
-- Technical gesture specification created (Open_Palm, Closed_Fist, Pointing_Up, Victory).
-- `GestureHero` virtual environment (Python 3.12) configured.
-- Dependencies installed: OpenCV, MediaPipe, etc.
-- **[NEW]** Containerization structure created with `Dockerfile` and `.dockerignore`.
-- **[NEW]** Switched to MediaPipe Pre-trained Models to skip custom training phase.
+- Technical gesture specification created.
+- **Pre-trained model (`gesture_recognizer.task`) already in the repo.**
+- **Main game loop (`game.py`) fully functional.**
 
-| ID | Phase | Responsibility | Scope | Depends on | Status |
-|:---|:---|:---|:---|:---|:---|
-| 1 | `Environment Setup` | Dev | Python 3.12, venv, dependencies, folders. | - | COMPLETED |
-| 1.1 | `Dockerization` | Dev | Create Dockerfile and .dockerignore for portability. | Phase 1 | COMPLETED |
-| 2 | `Pre-trained Model Setup` | Dev | Download `gesture_recognizer.task` and test Task API. | Phase 1 | COMPLETED |
-| 3 | `Game Logic & HUD (src/game.py)` | Dev/Game | VideoLoop, Gesture Inference, Score, HUD. | Phase 2 | TODO |
-| 4 | `Final Polish & Portfolio Artifacts` | Portfolio | README.md, testing, visual cleanup. | Phase 3 | TODO |
+| ID | Phase | Responsibility | Scope | Status |
+|:---|:---|:---|:---|:---|
+| 1 | `Environment Setup` | Dev | Python 3.12, venv, dependencies, folders. | COMPLETED |
+| 2 | `Pre-trained Model Setup` | Dev | MediaPipe Task API integration. | COMPLETED |
+| 3 | `Bilingual Portfolio` | Portfolio | README, README_BR, Multi-language docs. | COMPLETED |
+| 4 | `v1.1 - Docker Portability` | DevOps | Seamless webcam access via containers. | TODO |
