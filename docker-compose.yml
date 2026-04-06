@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  gesture-hero:
+    # 1. Comando: Onde está a receita (Dockerfile)?
+    build: .
+    
+    # 2. Imagem: O nome que daremos para essa "máquina"
+    image: gesture-hero:v1.1
+    
+    # 3. Mapeamento de Dispositivos (Cuidado: Pode dar erro no Windows inicialmente)
+    # No Windows/WSL2, o dispositivo da webcam geralmente aparece em /dev/video0
+    devices:
+      - "/dev/video0:/dev/video0"
+    
+    # 4. Variáveis de Ambiente (Conectar com o seu monitor)
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+    
+    # 5. Rede (Permitir que o container fale com o Windows)
+    network_mode: "host"
+
+    # 6. Volumes (Opcional: Ver as mudanças no código em tempo real no container)
+    volumes:
+      - .:/app
