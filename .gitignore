@@ -1,0 +1,16 @@
+# Ambientes virtuais
+GestureHero/
+venv/
+.env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Dados e Modelos (Subiremos apenas o código para o GitHub agora)
+data/
+models/*.h5
+
+# Arquivos de IDE
+.vscode/
+.idea/
