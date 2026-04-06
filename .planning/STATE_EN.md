@@ -2,14 +2,14 @@
 
 ## Date: 2026-04-06
 
-## Overall Status: ✅ v1.0 Completed!
-The project has reached its first stable landmark. The environment is set up, the AI model is integrated, and the bilingual documentation is finalized.
+## Overall Status: ✅ v2.0 Completed! (Gaming Experience)
+The project has evolved from a simple AI detector into a fully functional and engaging game. Competitive game logic has been successfully implemented.
 
-## What's been done (v1.0)?
-- ✅ Product Vision and Technical Specification.
-- ✅ Pre-trained MediaPipe model integrated with Git.
-- ✅ Main game loop functional (`src/game.py`).
-- ✅ README and strategic documentation in PT and EN.
+## What's been done (v2.0)?
+- ✅ Full refactor to OOP (Object-Oriented Programming).
+- ✅ Score, Lives, and Match Loop systems.
+- ✅ Advanced Visual HUD with color feedback.
+- ✅ Dynamic Difficulty integrated with scoring.
 
-## Next Milestone (v1.1):
-Planning for **v1.1 - Docker Portability**, focusing on native webcam support within containers.
+## Next Step:
+Finalize portfolio guide in README and laptop final testing.

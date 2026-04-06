@@ -2,28 +2,25 @@
 
 ## 🚀 Milestones
 
-### **v1.0 - GestureHero (Current Phase)**
-- ✅ Integrated MediaPipe recognition (no manual training required).
+### **v1.0 - GestureHero (Completed)**
+- ✅ MediaPipe recognition integrated (no manual training).
 - ✅ Bilingual documentation and professional READMEs.
-- ✅ Virtual environment `venv` configured and tracked.
-- 🏁 **READY FOR PORTFOLIO.**
 
-### **v1.1 - GestureHero - Docker (Next Phase)**
-- [ ] Implement webcam passthrough for Docker on Windows (using usbipd-win).
-- [ ] Optimize Docker image size.
-- [ ] Automation with Docker Compose.
+### **v1.1 - Docker Portability (Completed)**
+- ✅ Docker environment configured for OpenCV and Webcam Passthrough.
+
+### **v2.0 - Gaming Experience (Current Milestone)**
+- ✅ Object-Oriented Game Structure (Game Engine).
+- ✅ Score, Lives, and Combo systems implemented.
+- ✅ Gamer HUD with progress bars and dynamic feedback.
+- ✅ Dynamic Difficulty (Time limit decreases as score increases).
+- 🏁 **TOP PORTFOLIO LEVEL.**
 
 ---
 
-## What's been done?
-- Product vision defined.
-- Technical gesture specification created.
-- **Pre-trained model (`gesture_recognizer.task`) already in the repo.**
-- **Main game loop (`game.py`) fully functional.**
-
 | ID | Phase | Responsibility | Scope | Status |
 |:---|:---|:---|:---|:---|
-| 1 | `Environment Setup` | Dev | Python 3.12, venv, dependencies, folders. | COMPLETED |
-| 2 | `Pre-trained Model Setup` | Dev | MediaPipe Task API integration. | COMPLETED |
-| 3 | `Bilingual Portfolio` | Portfolio | README, README_BR, Multi-language docs. | COMPLETED |
-| 4 | `v1.1 - Docker Portability` | DevOps | Seamless webcam access via containers. | TODO |
+| 1 | `Environment Setup` | Dev | Python 3.12, venv, Docker. | COMPLETED |
+| 2 | `AI Foundations` | Dev | MediaPipe Task API integration. | COMPLETED |
+| 3 | `v2.0 - Gamification` | Game Dev | States, Score, Lives, Timer, Dynamic Difficulty. | COMPLETED |
+| 4 | `Final Polish` | Portfolio | Final testing and deployment guide. | IN PROGRESS |

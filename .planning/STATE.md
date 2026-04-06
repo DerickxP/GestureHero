@@ -2,14 +2,14 @@
 
 ## Data Atual: 2026-04-06
 
-## Status Geral: ✅ v1.0 Concluída!
-O projeto atingiu seu primeiro marco estável. O ambiente está configurado, o modelo de IA integrado e a documentação bilíngue finalizada.
+## Status Geral: ✅ v2.0 Concluída! (Gaming Experience)
+O projeto evoluiu de um simples detector de IA para um jogo funcional e engajador. A lógica de jogo competitiva foi implementada com sucesso.
 
-## O Que Foi Feito (v1.0)?
-- ✅ Visão do Produto e Especificação Técnica.
-- ✅ Modelo MediaPipe pré-treinado integrado ao Git.
-- ✅ Loop de jogo funcional (`src/game.py`).
-- ✅ README e documentação estratégica em PT e EN.
+## O Que Foi Feito (v2.0)?
+- ✅ Refatoração completa para POO (Programação Orientada a Objetos).
+- ✅ Sistema de Pontuação, Vidas e Loop de Gameplay.
+- ✅ HUD Visual avançado com feedback colorido.
+- ✅ Dificuldade dinâmica integrada ao score.
 
-## Próximo Passo (v1.1):
-Início do planejamento para **v1.1 - Portabilidade Docker**, focando no suporte a webcam via container.
+## Próximo Passo:
+Finalizar o guia de portfólio no README e testes finais no notebook.
