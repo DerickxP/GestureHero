@@ -41,6 +41,27 @@ class GestureHeroGame:
         # Draw Main Text
         cv2.putText(img, text, pos, font, scale, color, thickness, cv2.LINE_AA)
 
+    def draw_user_lives(self, img, x, y, size, lives, color, shadow_color=(0, 0, 0)):
+        for i in range(lives):
+            base_x = x + i * (size * 5 + 10)
+            offset = 2
+            
+            # Shadow
+            cv2.circle(img, (base_x - size + offset, y + offset), size, shadow_color, -1)
+            cv2.circle(img, (base_x + size + offset, y + offset), size, shadow_color, -1)
+            pts = np.array([[base_x - 2*size + offset, y + offset], 
+                            [base_x + 2*size + offset, y + offset], 
+                            [base_x + offset, y + 2*size + int(size*0.5) + offset]], np.int32)
+            cv2.fillConvexPoly(img, pts, shadow_color)
+
+            # Heart
+            cv2.circle(img, (base_x - size, y), size, color, -1)
+            cv2.circle(img, (base_x + size, y), size, color, -1)
+            pts = np.array([[base_x - 2*size, y], 
+                            [base_x + 2*size, y], 
+                            [base_x, y + 2*size + int(size*0.5)]], np.int32)
+            cv2.fillConvexPoly(img, pts, color)
+
     def process_frame(self, frame):
         if self.game_over:
             return self.draw_game_over(frame)
@@ -84,19 +105,31 @@ class GestureHeroGame:
         cv2.addWeighted(overlay, 0.6, frame, 0.4, 0, frame)
 
         # Labels
-        self.draw_text_with_shadow(frame, f"SCORE: {self.score}", (30, 45), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 0), 2)
+        self.draw_text_with_shadow(frame, f"SCORE: {self.score}", (30, 45), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
+        self.draw_text_with_shadow(frame, "LIVES:", (w - 230, 45), cv2.FONT_HERSHEY_DUPLEX, 0.9, (255, 255, 255), 2)
         
         # Hearts for Lives
         heart_color = (0, 0, 255) if self.lives > 1 else (0, 165, 255)
-        self.draw_text_with_shadow(frame, f"LIVES: {'L' * self.lives}", (w - 280, 45), cv2.FONT_HERSHEY_DUPLEX, 0.9, heart_color, 2)
+        self.draw_user_lives(frame, w - 120, 37, 7, self.lives, heart_color)
 
         # 2. Central Instruction Panel
         # Create a darker focus area in the middle for the command
         cv2.rectangle(frame, (w//2 - 200, h//2 - 130), (w//2 + 200, h//2 - 40), (20, 20, 20), -1)
         cv2.rectangle(frame, (w//2 - 200, h//2 - 130), (w//2 + 200, h//2 - 40), self.feedback_color, 2)
         
-        # Draw central command
-        self.draw_text_with_shadow(frame, self.feedback_text, (w//2 - 160, h//2 - 70), cv2.FONT_HERSHEY_DUPLEX, 1.3, self.feedback_color, 2)
+        # Draw central command (Centered dynamically)
+        text_cmd = self.feedback_text
+        font_cmd = cv2.FONT_HERSHEY_DUPLEX
+        scale_cmd = 1.3
+        thick_cmd = 2
+        size_cmd, _ = cv2.getTextSize(text_cmd, font_cmd, scale_cmd, thick_cmd)
+        
+        # Center horizontally, and perfectly center vertically inside the rect (height range -130 to -40)
+        box_center_y = h // 2 - 85
+        text_x = (w - size_cmd[0]) // 2
+        text_y = box_center_y + (size_cmd[1] // 2)
+        
+        self.draw_text_with_shadow(frame, text_cmd, (text_x, text_y), font_cmd, scale_cmd, self.feedback_color, thick_cmd)
 
         # 3. Premium Timer Bar
         # Bar background
@@ -121,9 +154,29 @@ class GestureHeroGame:
         cv2.rectangle(overlay, (0, 0), (w, h), (0, 0, 0), -1)
         cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
 
-        self.draw_text_with_shadow(frame, "MISSION FAILED", (w//2 - 200, h//2 - 50), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255), 4)
-        self.draw_text_with_shadow(frame, f"FINAL SCORE: {self.score}", (w//2 - 140, h//2 + 50), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
-        self.draw_text_with_shadow(frame, "Press 'r' to Retry or 'q' to Quit", (w//2 - 220, h//2 + 130), cv2.FONT_HERSHEY_DUPLEX, 0.7, (180, 180, 180), 1)
+        # Draw "MISSION FAILED"
+        text1 = "MISSION FAILED"
+        font1 = cv2.FONT_HERSHEY_DUPLEX
+        scale1 = 2
+        thick1 = 4
+        size1, _ = cv2.getTextSize(text1, font1, scale1, thick1)
+        self.draw_text_with_shadow(frame, text1, ((w - size1[0]) // 2, h // 2 - 50), font1, scale1, (0, 0, 255), thick1)
+
+        # Draw "FINAL SCORE"
+        text2 = f"FINAL SCORE: {self.score}"
+        font2 = cv2.FONT_HERSHEY_DUPLEX
+        scale2 = 1
+        thick2 = 2
+        size2, _ = cv2.getTextSize(text2, font2, scale2, thick2)
+        self.draw_text_with_shadow(frame, text2, ((w - size2[0]) // 2, h // 2 + 50), font2, scale2, (255, 255, 255), thick2)
+
+        # Draw instructions
+        text3 = "Press 'r' to Retry or 'q' to Quit"
+        font3 = cv2.FONT_HERSHEY_DUPLEX
+        scale3 = 0.7
+        thick3 = 1
+        size3, _ = cv2.getTextSize(text3, font3, scale3, thick3)
+        self.draw_text_with_shadow(frame, text3, ((w - size3[0]) // 2, h // 2 + 130), font3, scale3, (180, 180, 180), thick3)
         
         return frame
 
