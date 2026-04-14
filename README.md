@@ -1,70 +1,72 @@
+*🌍 Read this in [English](README_EN.md).*
+
 # 🖐️ Gesture Hero
 
-**Gesture Hero** is a real-time computer vision minigame where you control the action using hand gestures. Built with Python, OpenCV, and Google's MediaPipe, it demonstrates the power of pre-trained AI models in interactive applications.
+**Gesture Hero** é um minijogo de visão computacional em tempo real onde você controla a ação usando gestos das mãos. Construído com Python, OpenCV e MediaPipe do Google, ele demonstra o poder de modelos de IA pré-treinados em aplicações interativas.
 
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
 ![MediaPipe](https://img.shields.io/badge/AI-MediaPipe-green.svg)
 ![OpenCV](https://img.shields.io/badge/UI-OpenCV-orange.svg)
-![Docker](https://img.shields.io/badge/Environment-Docker-blue.svg)
+![Docker](https://img.shields.io/badge/Ambiente-Docker-blue.svg)
 
-## 🎯 Project Vision
-The goal of this project is to create an engaging, low-latency gaming experience using nothing but a standard webcam. By leveraging **MediaPipe's Gesture Recognizer API**, we achieve high-precision detection without the need for custom dataset collection or manual model training.
+## 🎯 Visão do Projeto
+O objetivo deste projeto é criar uma experiência de jogo envolvente e de baixa latência usando nada mais do que uma webcam padrão. Ao aproveitar a **Gesture Recognizer API do MediaPipe**, alcançamos detecção de alta precisão sem a necessidade de coleta de dataset customizado ou treinamento manual de modelos.
 
-## ✨ Features
-- **Real-time Recognition**: Instant detection of complex hand gestures.
-- **Pre-trained AI**: Uses Google's state-of-the-art gesture recognition models.
-- **Portable**: Fully containerized with Docker for consistent deployment.
-- **Professional Architecture**: Managed with professional software development practices.
+## ✨ Funcionalidades
+- **Reconhecimento em Tempo Real**: Detecção instantânea de gestos complexos das mãos.
+- **IA Pré-treinada**: Utiliza os modelos de reconhecimento de gestos de última geração do Google.
+- **Portátil**: Totalmente conteinerizado com Docker para implantação consistente.
+- **Arquitetura Profissional**: Gerenciado com práticas profissionais de ML.
 
-## 🚀 Supported Gestures
-| Gesture | Game Action |
+## 🚀 Gestos Suportados
+| Gesto | Ação no Jogo |
 |:---|:---|
-| 🖐️ **Open_Palm** | Defense / Menu |
-| ✊ **Closed_Fist** | Attack / Select |
-| ✌️ **Victory** | Special Move |
-| ☝️ **Pointing_Up** | Navigate / Aim |
+| 🖐️ **Open_Palm** | Defesa / Menu |
+| ✊ **Closed_Fist** | Ataque / Seleção |
+| ✌️ **Victory** | Movimento Especial |
+| ☝️ **Pointing_Up** | Navegação / Mira |
 
-## 🛠️ Installation & Setup
+## 🛠️ Instalação e Configuração
 
-### Prerequisites
+### Pré-requisitos
 - Python 3.12+
-- A working webcam
+- Uma webcam funcional
 
-### Local Setup
-1. **Clone the repository:**
+### Configuração Local
+1. **Clone o repositório:**
    ```bash
-   git clone <your-repo-url>
+   git clone <url-do-seu-repositorio>
    cd GestureHero
    ```
 
-2. **Create and activate a virtual environment:**
+2. **Crie e ative um ambiente virtual:**
    ```bash
    python -m venv GestureHero
    .\GestureHero\Scripts\activate  # Windows
    source GestureHero/bin/activate # Linux/Mac
    ```
 
-3. **Install dependencies:**
+3. **Instale as dependências:**
    ```bash
    pip install -r requeriments.txt
    ```
 
-4. **Run the Game:**
+4. **Execute o Jogo:**
    ```bash
    python src/game.py
    ```
 
-### Docker Setup
-If you prefer to run in a containerized environment (for development setup):
+### Configuração Docker
+Se preferir rodar em um ambiente conteinerizado:
 ```bash
 docker build -t gesture-hero .
 ```
 
-## 📂 Project Structure
-- `src/`: Main source code (Game loop and logic).
-- `models/`: Pre-trained AI model files (`.task`).
-- `scripts/`: Utility scripts (model downloaders, etc.).
-- `.planning/`: Documentation and project lifecycle management.
+## 📂 Estrutura do Projeto
+- `src/`: Código-fonte principal (Loop e lógica do jogo).
+- `models/`: Arquivos de modelo de IA pré-treinados (`.task`).
+- `scripts/`: Scripts utilitários (downloaders de modelos, etc.).
+- `.planning/`: Documentação e gerenciamento do ciclo de vida do projeto.
 
 ---
-*Created with ❤️ for portfolio demonstration purposes.*
+*Criado com ❤️ para fins de demonstração de portfólio.*

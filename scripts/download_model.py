@@ -7,12 +7,13 @@ def download_model():
 
     os.makedirs("models", exist_ok=True)
 
-    print(f"Starting model download to: {save_path}...")
+    print(f"Iniciando o download do modelo para: {save_path}...")
     try:
         urllib.request.urlretrieve(model_url, save_path)
-        print("Download completed successfully!")
+        print("Download concluído com sucesso!")
+        print("Agora você já pode rodar o Gesture Hero!")
     except Exception as e:
-        print(f"Error downloading the model: {e}")
+        print(f"Erro ao baixar o modelo de IA: {e}")
 
 if __name__ == "__main__":
     download_model()

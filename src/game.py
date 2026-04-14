@@ -22,12 +22,14 @@ class GestureHeroGame:
         self.recognizer = vision.GestureRecognizer.create_from_options(options)
 
         self.gestures_pool = ['Open_Palm', 'Closed_Fist', 'Victory', 'Pointing_Up']
+        
         self.gestures_pt = {
             'Open_Palm': 'MAO ABERTA',
             'Closed_Fist': 'MAO FECHADA',
             'Victory': 'SINAL DE V',
             'Pointing_Up': 'DEDO P/ CIMA'
         }
+        
         self.score = 0
         self.lives = 3
         self.game_over = False
@@ -139,7 +141,7 @@ class GestureHeroGame:
         cv2.rectangle(frame, (50, h - 40), (w - 50, h - 20), (50, 50, 50), -1)
         progress = 1 - (elapsed / self.time_limit)
         bar_width = int((w - 100) * progress)
-        bar_color = (0, int(255 * progress), int(255 * (1-progress)))
+        bar_color = (0, int(255 * progress), int(255 * (1-progress))) 
         cv2.rectangle(frame, (50, h - 40), (50 + bar_width, h - 20), bar_color, -1)
         cv2.rectangle(frame, (50, h - 40), (w - 50, h - 20), (200, 200, 200), 1)
 
@@ -188,7 +190,7 @@ def run_game():
         frame = cv2.flip(frame, 1)
         frame = game.process_frame(frame)
 
-        cv2.imshow('Gesture Hero v2.1 - Premium Edition', frame)
+        cv2.imshow('Gesture Hero v2.1 - Edicao Premium', frame)
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
