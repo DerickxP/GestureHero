@@ -1,71 +1,75 @@
-*🌍 Leia em [Português](README.md).*
+*Leia em [Português](README.md).*
 
-# 🖐️ Gesture Hero
+# Gesture Hero
 
-**Gesture Hero** is a real-time computer vision minigame where you control the action using hand gestures. Built with Python, OpenCV, and Google's MediaPipe, it demonstrates the power of pre-trained AI models in interactive applications.
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.13-5C3EE8?logo=opencv&logoColor=white)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-Gesture%20Recognizer-0097A7?logo=google&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![MediaPipe](https://img.shields.io/badge/AI-MediaPipe-green.svg)
-![OpenCV](https://img.shields.io/badge/UI-OpenCV-orange.svg)
-![Docker](https://img.shields.io/badge/Environment-Docker-blue.svg)
+A reflex minigame played with your hands through the webcam: the game asks for a
+gesture and you have a few seconds to make it in front of the camera. Recognition uses
+MediaPipe's pre-trained **Gesture Recognizer** model, so there is no data collection or
+training: the game works out of the box with the model included in the repository.
 
-## 🎯 Project Vision
-The goal of this project is to create an engaging, low-latency gaming experience using nothing but a standard webcam. By leveraging **MediaPipe's Gesture Recognizer API**, we achieve high-precision detection without the need for custom dataset collection or manual model training.
+## How it works
 
-## ✨ Features
-- **Real-time Recognition**: Instant detection of complex hand gestures.
-- **Pre-trained AI**: Uses Google's state-of-the-art gesture recognition models.
-- **Portable**: Fully containerized with Docker for consistent deployment.
-- **Professional Architecture**: Managed with professional software development practices.
+1. Each round the game picks one of the four gestures at random and shows its name on
+   screen.
+2. Every webcam frame goes through the Gesture Recognizer; if the recognized gesture is
+   the requested one, you earn **100 points** and the next round starts.
+3. The time to respond starts at **3 s** and shrinks by 3% on each hit, down to a minimum
+   of **1.2 s**. A bar at the bottom shows the time left.
+4. Letting the time run out costs one of your **3 lives**. With no lives left, the game
+   over screen shows the final score.
 
-## 🚀 Supported Gestures
-| Gesture | Game Action |
-|:---|:---|
-| 🖐️ **Open_Palm** | Defense / Menu |
-| ✊ **Closed_Fist** | Attack / Select |
-| ✌️ **Victory** | Special Move |
-| ☝️ **Pointing_Up** | Navigate / Aim |
+## Supported gestures
 
-## 🛠️ Installation & Setup
+| Gesture | Model label | On-screen command (PT) |
+|---|---|---|
+| ✋ Open hand | `Open_Palm` | MAO ABERTA |
+| ✊ Closed fist | `Closed_Fist` | MAO FECHADA |
+| ✌️ Victory sign | `Victory` | SINAL DE V |
+| ☝️ Pointing up | `Pointing_Up` | DEDO P/ CIMA |
 
-### Prerequisites
-- Python 3.12+
-- A working webcam
+## How to run
 
-### Local Setup
-1. **Clone the repository:**
-   ```bash
-   git clone <your-repo-url>
-   cd GestureHero
-   ```
+Requirements: Python 3.12 and a webcam.
 
-2. **Create and activate a virtual environment:**
-   ```bash
-   python -m venv GestureHero
-   .\GestureHero\Scripts\activate  # Windows
-   source GestureHero/bin/activate # Linux/Mac
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requeriments.txt
-   ```
-
-4. **Run the Game:**
-   ```bash
-   python src/game.py
-   ```
-
-### Docker Setup
-If you prefer to run in a containerized environment (for development setup):
 ```bash
-docker build -t gesture-hero .
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python src/game.py
 ```
 
-## 📂 Project Structure
-- `src/`: Main source code (Game loop and logic).
-- `models/`: Pre-trained AI model files (`.task`).
-- `scripts/`: Utility scripts (model downloaders, etc.).
+Run it from the repository root, because the model is loaded from
+`models/gesture_recognizer.task`. If the file is missing, download it with
+`python scripts/download_model.py`.
 
----
-*Created with ❤️ for portfolio demonstration purposes.*
+Controls: **q** quits and **r** restarts after game over.
+
+## Structure
+
+```
+src/game.py                  # game loop, rules and HUD drawn with OpenCV
+src/collect_data.py          # hand landmark collection to .npy (experiment, not used by the game)
+scripts/download_model.py    # downloads the Gesture Recognizer model
+models/gesture_recognizer.task
+Dockerfile, docker-compose.yml
+```
+
+## Limitations
+
+- **Docker does not work yet.** The `Dockerfile` copies `requeriments.txt`, but the file
+  is named `requirements.txt`, and `.dockerignore` excludes the `models/` folder. The
+  video setup (`DISPLAY=host.docker.internal:0.0` and `/dev/video0`) also targets Windows
+  with an X server and needs adjusting on other systems.
+- `requirements.txt` includes packages the game does not use, such as TensorFlow, Keras
+  and scikit-learn, left over from an experiment with training a custom model. Only
+  `mediapipe`, `opencv-python` and `numpy` are needed to play.
+- Only the first detected hand is considered, and recognition depends on good lighting.
+
+## License
+
+[MIT](LICENSE)
