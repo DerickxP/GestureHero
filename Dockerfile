@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # 4. Copiamos o seu arquivo de requerimentos e instalamos as bibliotecas do Python
-COPY requeriments.txt .
-RUN pip install --no-cache-dir -r requeriments.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Copiamos o restante do seu projeto para dentro do container
 COPY . .

@@ -60,10 +60,10 @@ Dockerfile, docker-compose.yml
 
 ## Limitações
 
-- **Docker ainda não funciona.** O `Dockerfile` copia `requeriments.txt`, mas o arquivo
-  se chama `requirements.txt`, e o `.dockerignore` exclui a pasta `models/`. Além disso,
-  a configuração de vídeo (`DISPLAY=host.docker.internal:0.0` e `/dev/video0`) foi
-  pensada para Windows com servidor X, e precisa ser ajustada em outros sistemas.
+- **Docker não testado de ponta a ponta.** A imagem inclui o modelo e as dependências,
+  mas a configuração de vídeo (`DISPLAY=host.docker.internal:0.0` e `/dev/video0`) foi
+  pensada para Windows com servidor X e precisa ser ajustada em outros sistemas. Rodar
+  direto com Python é o caminho recomendado.
 - O `requirements.txt` traz pacotes que o jogo não usa, como TensorFlow, Keras e
   scikit-learn, sobras do experimento de treinar um modelo próprio. Só `mediapipe`,
   `opencv-python` e `numpy` são necessários para jogar.
