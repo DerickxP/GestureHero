@@ -66,7 +66,6 @@ docker build -t gesture-hero .
 - `src/`: Código-fonte principal (Loop e lógica do jogo).
 - `models/`: Arquivos de modelo de IA pré-treinados (`.task`).
 - `scripts/`: Scripts utilitários (downloaders de modelos, etc.).
-- `.planning/`: Documentação e gerenciamento do ciclo de vida do projeto.
 
 ---
 *Criado com ❤️ para fins de demonstração de portfólio.*
